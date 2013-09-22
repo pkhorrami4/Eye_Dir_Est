@@ -32,6 +32,8 @@ def detect_face(img):
 
 if __name__ == '__main__':
 
+	print('Hello!')
+
 	subj_num = 0
 	if(len(sys.argv) != 3):
 		print('disp_grid_w_vid_capt.py -s subj_num')
