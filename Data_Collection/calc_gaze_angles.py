@@ -46,8 +46,11 @@ def compute_gaze_dir_vect(eye_coords, head_pose_angles, true_gaze_pt):
 	
 	
 	# Compute Pose Direction Vector
-	
-	
+	alpha = head_pose_angles[0]
+	beta = head_pose_angles[1]
+	gamma = head_pose_angles[2]
+	d_p = np.array([np.cos(alpha)*np.sin(beta), -np.sin(alpha), np.cos(alpha)*np.cos(beta)])	
+	print('Head Pose Dir. Vector: '+str(d_p))
 	
 	# Convert True Gaze Point (to mm in monitor coordinate system)
 	true_gaze_pt = true_gaze_pt * np.array([X_ratio, Y_ratio, 0]) - np.array([float(MONITOR_DIM_X)/2, float(MONITOR_DIM_Y)/2, 0])	
@@ -57,7 +60,7 @@ def compute_gaze_dir_vect(eye_coords, head_pose_angles, true_gaze_pt):
 			
 	# Compute Gaze Direction Vector
 	d_g = (true_gaze_pt_wcs - eye_R_WC).astype('float32')/(-Z)
-	print(d_g)
+	print('Gaze Dir. Vector: '+str(d_g))
 	
 	
 ## MAIN
